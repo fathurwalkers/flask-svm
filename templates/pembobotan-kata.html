@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+
+{% block header_content %}
+Pembobotan Kata
+{% endblock %}
+{% block mini_header_content %}
+Pembobotan Kata
+{% endblock %}
+
+{% block style_css %}
+<link href="/datatables/datatables.min.css" rel="stylesheet">
+<style>
+
+</style>
+{% endblock %}
+
+{% block main_content %}
+<div class="container pb-4">
+
+    <div class="row pb-4">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="container mb-4">
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-dark">
+                                    <b>Hasil Pembobotan Kata</b>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button type="button" class="btn btn-md btn-primary mr-1">Copy</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">Excel</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">CSV</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">PDF</button>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                <div class="table-responsive">
+                                    <table id="example" class="display table-bordered" style="width:100%">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Kata</th>
+                                                <th>Term Frequence</th>
+                                                <th>IDF</th>
+                                                <th>TF-IDF</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td>1</td>
+                                                <td>jokowi</td>
+                                                <td>23</td>
+                                                <td>3.40</td>
+                                                <td>3.34</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>periode</td>
+                                                <td>23</td>
+                                                <td>3.40</td>
+                                                <td>3.34</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>presiden</td>
+                                                <td>10</td>
+                                                <td>7.02</td>
+                                                <td>9.33</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>dunia</td>
+                                                <td>3</td>
+                                                <td>11.40</td>
+                                                <td>2.78</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>5.06</td>
+                                                <td>2.96</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/datatables/datatables.min.js"></script>
+<script src="/assets/ruangadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script>
+    // const datatabless = document.getElementById('example');
+    // datatabless.DataTable();
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+{% endblock %}

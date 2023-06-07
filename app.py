@@ -30,5 +30,9 @@ def dashboard_preprocessing():
 def dashboard_spell_correction():
     return render_template('spell-correction.html')
 
+@app.route('/dashboard/pembobotan-kata')
+def dashboard_pembobotan_kata():
+    return render_template('pembobotan-kata.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5002)

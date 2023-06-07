@@ -21,21 +21,21 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url_for('dashboard') }}">
                 <div class="sidebar-brand-icon">
                     <img src="/assets/ruangadmin/img/logo/logo2.png">
                 </div>
-                <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+                <div class="sidebar-brand-text mx-3">ANALISIS SVM</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ url_for('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Beranda</span></a>
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                Features
+                Analisi Sentimen
             </div>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
@@ -47,38 +47,38 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Bootstrap UI</h6>
-                        <a class="collapse-item" href="alerts.html">Data Sentimen</a>
-                        <a class="collapse-item" href="buttons.html">Data Lainnya</a>
+                        <a class="collapse-item" href="#">Data Sentimen</a>
+                        <a class="collapse-item" href="#">Data Lainnya</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
+                <a class="nav-link" href="{{ url_for('dashboard_crawling') }}">
                     <i class="fas fa-fw fa-palette"></i>
                     <span>Crawling Data</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
+                <a class="nav-link" href="{{ url_for('dashboard_preprocessing') }}">
                     <i class="fas fa-fw fa-palette"></i>
                     <span>Pre-processing Step</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
+                <a class="nav-link" href="{{ url_for('dashboard_spell_correction') }}">
                     <i class="fas fa-fw fa-palette"></i>
                     <span>Spell Correction</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
+                <a class="nav-link" href="{{ url_for('dashboard_pembobotan_kata') }}">
                     <i class="fas fa-fw fa-palette"></i>
                     <span>Check Pembobotan Kata</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-palette"></i>
                     <span>Settings</span>
                 </a>
@@ -101,7 +101,6 @@
                 </div>
             </li>
             <hr class="sidebar-divider">
-            <div class="version" id="version-ruangadmin"></div>
         </ul>
         <!-- Sidebar -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -272,7 +271,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle" src="/assets/ruangadmin/img/boy.png"
                                     style="max-width: 60px">
-                                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                                <span class="ml-2 d-none d-lg-inline text-white small">Hai, Users!</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
