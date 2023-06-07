@@ -8,7 +8,7 @@ app.debug = True
 
 @app.route("/")
 def home():
-    return redirect(url_for('login'))
+    return redirect(url_for('dashboard'))
 
 @app.route('/dashboard')
 def dashboard():
@@ -21,6 +21,14 @@ def login():
 @app.route('/dashboard/crawling')
 def dashboard_crawling():
     return render_template('crawling.html')
+
+@app.route('/dashboard/pre-processing')
+def dashboard_preprocessing():
+    return render_template('pre-processing.html')
+
+@app.route('/dashboard/spell-correction')
+def dashboard_spell_correction():
+    return render_template('spell-correction.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5002)
