@@ -18,5 +18,9 @@ def dashboard():
 def login():
     return render_template('login.html')
 
+@app.route('/dashboard/crawling')
+def dashboard_crawling():
+    return render_template('crawling.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5002)

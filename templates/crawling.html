@@ -1,0 +1,216 @@
+{% extends 'layout.html' %}
+
+{% block header_content %}
+Beranda
+{% endblock %}
+{% block mini_header_content %}
+Beranda
+{% endblock %}
+
+{% block style_css %}
+<link href="/datatables/datatables.min.css" rel="stylesheet">
+<style>
+
+</style>
+{% endblock %}
+
+{% block main_content %}
+<div class="container pb-4">
+
+    <div class="row pb-4">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="container mt-2">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-dark">
+                                    <b>Crawling Data</b>
+                                </h4>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
+                                <button type="button" class="btn btn-sm btn-primary">Kembali</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container mb-4">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>Silahkan Masukkan Hastag / Kata Kunci dan Jumlah Maksimal Tweet yang akan diambil
+                                    melalui Twitter API dan tekan tombol "Proses" untuk melakukan Memproses Pengambilan
+                                    Data</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Kata Kunci / Hastags</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Contoh : Jokowi 3 Periode">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="number1">Jumlah Pencarian Tweet</label>
+                                    <input type="number" class="form-control" id="number1" aria-describedby="emailHelp"
+                                        placeholder="Contoh : 100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
+                                <button type="button" class="btn btn-md btn-primary">Proses</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <div class="container mt-2">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-dark">
+                                    <b>Data Terkumpul</b>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container mb-4">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>Data yang dikumpul dan ditampilkan dibawah ini adalah data yang diperoleh dari proses
+                                    pengambilan data melalui Twitter API melewati Konfigurasi pada Panel Crawling Data
+                                    diatas. </p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button type="button" class="btn btn-md btn-primary mr-1">Copy</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">Excel</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">CSV</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">PDF</button>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                <div class="table-responsive">
+                                    <table id="example" class="display table-bordered" style="width:100%">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Nama</th>
+                                                <th>Tweet</th>
+                                                <th>Tanggal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td>1</td>
+                                                <td>prixxing223</td>
+                                                <td>Memperingati 2 Periode Jokowi [Happy]</td>
+                                                <td>22/12/2022</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>ridho293exe</td>
+                                                <td>RT @blouverad : Publik News Jokowi 3 Periode</td>
+                                                <td>06/02/2018</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>min_max</td>
+                                                <td>RT @uuulove333: Kapanlagi ada presiden 3 periode?WKWKKWK</td>
+                                                <td>03/11/2012</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>skyler_xoxo22</td>
+                                                <td>Piala Dunia Malam ini GUY #jokowi3periode</td>
+                                                <td>22/12/2022</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>fwalkers44</td>
+                                                <td>Coba klo pak Jokowi boleh 3 periode tambah menangis lagi kalian</td>
+                                                <td>01/02/2022</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>clingy_clingy_thing</td>
+                                                <td>JOKOWI 3 PERIODE 👍👍👍...SATU KOMANDO 💪💪💪</td>
+                                                <td>06/12/2021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>hiyaaa0000</td>
+                                                <td>Kan gw bilang. Jokowi akan 3 periode bahkan sampai 5-6 periode. Jika
+                                                    Amerika belum mendapatkan tanda tangan saya!</td>
+                                                <td>22/12/2017</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>x_x_xoxo</td>
+                                                <td>Saya justru yg pengen Pak Jokowi 3 periode. Saya tinggal di luar
+                                                    negeri, sering bangga pas orang lokal yg saya temui mengatakan:
+                                                    “Presiden mu yg sekarang hebat! Beda dg yg dulu2”. Sampe naik taxi
+                                                    pun pernah ada supir nya bilang “Indonesia sekarang jauh lebih baik
+                                                    dari yg dulu”</td>
+                                                <td>17/08/2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>periode3periode</td>
+                                                <td>RT @bosssmudik304: #Jokowi3Periode</td>
+                                                <td>02/02/2023</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>jokowiperiode333</td>
+                                                <td>82% Rakyat bisa juga bikin people power utk Pak Jokowi 3 periode
+                                                </td>
+                                                <td>05/09/2021</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/datatables/datatables.min.js"></script>
+<script src="/assets/ruangadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script>
+    // const datatabless = document.getElementById('example');
+    // datatabless.DataTable();
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+{% endblock %}
