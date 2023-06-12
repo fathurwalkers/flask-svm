@@ -132,72 +132,14 @@ Beranda
                                         </thead>
                                         <tbody>
 
+                                            {% for items in data_tweets : %}
                                             <tr>
-                                                <td>1</td>
-                                                <td>prixxing223</td>
-                                                <td>Memperingati 2 Periode Jokowi [Happy]</td>
-                                                <td>22/12/2022</td>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ items[1] }}</td>
+                                                <td>{{ items[2] }}</td>
+                                                <td>{{ items[0] }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>ridho293exe</td>
-                                                <td>RT @blouverad : Publik News Jokowi 3 Periode</td>
-                                                <td>06/02/2018</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>min_max</td>
-                                                <td>RT @uuulove333: Kapanlagi ada presiden 3 periode?WKWKKWK</td>
-                                                <td>03/11/2012</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>skyler_xoxo22</td>
-                                                <td>Piala Dunia Malam ini GUY #jokowi3periode</td>
-                                                <td>22/12/2022</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>fwalkers44</td>
-                                                <td>Coba klo pak Jokowi boleh 3 periode tambah menangis lagi kalian</td>
-                                                <td>01/02/2022</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>clingy_clingy_thing</td>
-                                                <td>JOKOWI 3 PERIODE 👍👍👍...SATU KOMANDO 💪💪💪</td>
-                                                <td>06/12/2021</td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>hiyaaa0000</td>
-                                                <td>Kan gw bilang. Jokowi akan 3 periode bahkan sampai 5-6 periode. Jika
-                                                    Amerika belum mendapatkan tanda tangan saya!</td>
-                                                <td>22/12/2017</td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>x_x_xoxo</td>
-                                                <td>Saya justru yg pengen Pak Jokowi 3 periode. Saya tinggal di luar
-                                                    negeri, sering bangga pas orang lokal yg saya temui mengatakan:
-                                                    “Presiden mu yg sekarang hebat! Beda dg yg dulu2”. Sampe naik taxi
-                                                    pun pernah ada supir nya bilang “Indonesia sekarang jauh lebih baik
-                                                    dari yg dulu”</td>
-                                                <td>17/08/2020</td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>periode3periode</td>
-                                                <td>RT @bosssmudik304: #Jokowi3Periode</td>
-                                                <td>02/02/2023</td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>jokowiperiode333</td>
-                                                <td>82% Rakyat bisa juga bikin people power utk Pak Jokowi 3 periode
-                                                </td>
-                                                <td>05/09/2021</td>
-                                            </tr>
+                                            {% endfor %}
 
                                         </tbody>
                                     </table>
