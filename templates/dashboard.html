@@ -18,6 +18,23 @@ Beranda
 {% block main_content %}
 <div class="container">
 
+    <div class="card">
+        <div class="card-body">
+            <di class="row">
+                <div class="container">
+                    <!-- {{ login }} -->
+                    <br />
+
+                    {% for items in login: %}
+                    <li>{{ items[1] }} / {{ items[2] }}</li>
+                    {% endfor %}
+                    <!--  -->
+
+                </div>
+            </di>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6">
             <div>

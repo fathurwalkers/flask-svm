@@ -33,39 +33,53 @@ Beranda
                                 <button type="button" class="btn btn-sm btn-primary">Kembali</button>
                             </div>
                         </div>
+                        <div class="row">
+                            {% for items in data_tweets : %}
+                            <ul>
+                                <li>{{ items[0] }}</li>
+                                <li>{{ items[1] }}</li>
+                                <li>{{ items[2] }}</li>
+                            </ul>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="container mb-4">
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <p>Silahkan Masukkan Hastag / Kata Kunci dan Jumlah Maksimal Tweet yang akan diambil
-                                    melalui Twitter API dan tekan tombol "Proses" untuk melakukan Memproses Pengambilan
-                                    Data</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Kata Kunci / Hastags</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Contoh : Jokowi 3 Periode">
+                        <form action="" method="POST">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <p>Silahkan Masukkan Hastag / Kata Kunci dan Jumlah Maksimal Tweet yang akan diambil
+                                        melalui Twitter API dan tekan tombol "Proses" untuk melakukan Memproses
+                                        Pengambilan
+                                        Data</p>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <label for="number1">Jumlah Pencarian Tweet</label>
-                                    <input type="number" class="form-control" id="number1" aria-describedby="emailHelp"
-                                        placeholder="Contoh : 100">
+
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="kata_kunci">Kata Kunci / Hastags</label>
+                                        <input type="text" class="form-control" id="kata_kunci"
+                                            aria-describedby="emailHelp" placeholder="Contoh : Jokowi 3 Periode"
+                                            name="kata_kunci">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="number1">Jumlah Pencarian Tweet</label>
+                                        <input type="number" class="form-control" id="number1"
+                                            aria-describedby="emailHelp" placeholder="Contoh : 100" name="jumlah_tweet">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
-                                <button type="button" class="btn btn-md btn-primary">Proses</button>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-md btn-primary">Proses</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
                     </div>
                 </div>
