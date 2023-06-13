@@ -1,6 +1,8 @@
 from flask import redirect, url_for, render_template, request
 import snscrape.modules.twitter as sntwitter 
 
+from scripts import app, connect
+
 @app.route("/")
 def home():
     return redirect(url_for('dashboard'))
@@ -46,5 +48,5 @@ def dashboard_spell_correction():
 def dashboard_pembobotan_kata():
     return render_template('pembobotan-kata.html')
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5002)
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=5002)

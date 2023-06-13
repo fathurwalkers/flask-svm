@@ -1,6 +1,7 @@
 from flask import Flask
-from module import connect
+import module
 import pandas as pd
+import pymysql
 
 app = Flask(__name__, 
             static_url_path='',
@@ -8,4 +9,7 @@ app = Flask(__name__,
 app.secret_key = "sangatrahasia"
 app.debug = True
 
-from .app import *
+def connect():    
+    return pymysql.connect(host="localhost", user="root", password="", database="aplikasi_svm", charset='utf8mb4')
+
+from scripts.src import *
