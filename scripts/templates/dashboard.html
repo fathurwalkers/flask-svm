@@ -20,42 +20,35 @@ Beranda
 
     <div class="card">
         <div class="card-body">
-            <di class="row">
-                <div class="container">
-                    <!-- {{ login }} -->
-                    <br />
 
-                    {% for items in login: %}
-                    <li>{{ items[1] }} / {{ items[2] }}</li>
-                    {% endfor %}
-                    <!--  -->
+            <div class="container">
 
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div>
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </di>
-        </div>
-    </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div>
+                            <canvas id="myChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-6">
-            <div>
-                <canvas id="myChart"></canvas>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-6">
-            <div>
-                <canvas id="myChart2"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div>
-                <canvas id="myChart3"></canvas>
-            </div>
-        </div>
-    </div>
 
+        </div>
+    </div>
 </div>
+
 {% endblock %}
 
 {% block script_js %}
