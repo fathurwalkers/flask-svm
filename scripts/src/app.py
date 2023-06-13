@@ -25,9 +25,13 @@ def dashboard_crawling():
     if request.method == 'POST':
         kata_kunci = request.form['kata_kunci']
         jumlah_tweet = request.form['jumlah_tweet']
+        tanggal_dari = request.form['tanggal_dari']
+        tanggal_sampai = request.form['tanggal_sampai']
+        print(tanggal_dari)
+        print(tanggal_sampai)
         maxTweets = int(jumlah_tweet)
         print("start scraping")
-        cari_kata = kata_kunci + " since:2022-09-01 until:2023-01-01 lang:id"
+        cari_kata = kata_kunci + " since:" + tanggal_dari + " until:" + tanggal_sampai + " lang:id"
         print(cari_kata)
         for tweet in sntwitter.TwitterSearchScraper(cari_kata).get_items():
             if len(data_tweets) == maxTweets :
