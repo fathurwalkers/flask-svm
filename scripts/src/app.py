@@ -124,13 +124,13 @@ def dashboard_crawling():
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
     return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet, text_crawling=text_crawling, cleaning_text_crawling=cleaning_text_crawling, cleaningemoji=cleaningemoji, input_query=input_query, cek_prefix=random_strings)
 
-@app.route('/dashboard/pre-processing', methods=('GET', 'POST'))
-def dashboard_preprocessing():
-    
+@app.route('/dashboard/pre-processing/<prefix>', methods=('GET', 'POST'))
+def dashboard_preprocessing(prefix):
+    cek_prefix = prefix
     ceksession = cek_session()
     if ceksession == False:
         return redirect(url_for('login'))
-    return render_template('pre-processing.html')
+    return render_template('pre-processing.html', cek_prefix=cek_prefix)
 
 @app.route('/dashboard/spell-correction')
 def dashboard_spell_correction():
