@@ -103,115 +103,57 @@ Beranda
                 <div class="card-body">
                     <div class="container mb-4">
 
-                        <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                <h4 class="text-dark">
-                                    <b>Hasil dari Pembersihan Data. (Trim, Hapus URL, Mention, Clear Spaces, dst.)</b>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <p>Data yang dikumpul dan ditampilkan dibawah ini adalah data yang diperoleh dari proses
-                                    Pre-Processing Data melalui Twitter API. </p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <button type="button" class="btn btn-md btn-primary mr-1">Copy</button>
-                                <button type="button" class="btn btn-md btn-primary mr-1">Excel</button>
-                                <button type="button" class="btn btn-md btn-primary mr-1">CSV</button>
-                                <button type="button" class="btn btn-md btn-primary mr-1">PDF</button>
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-
-                                <div class="table-responsive">
-                                    <table id="example" class="display table-bordered" style="width:100%">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Tweet</th>
-                                                <th>Jumlah Kata</th>
-                                                <th>Jumlah Huruf</th>
-                                                <th>Jumlah Rerata Kata</th>
-                                                <th>Jumlah StopWord</th>
-                                                <th>Jumlah Hastag</th>
-                                                <th>Jumlah Character Numerik</th>
-                                                <th>Jumlah Uppercase</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Memperingati 2 Periode Jokowi [Happy]</td>
-                                                <td>22</td>
-                                                <td>567</td>
-                                                <td>5</td>
-                                                <td>0</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>6</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>RT @blouverad : Publik News Jokowi 3 Periode</td>
-                                                <td>22</td>
-                                                <td>56</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>6</td>
-                                                <td>8</td>
-                                                <td>11</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>RT @uuulove333: Kapanlagi ada presiden 3 periode?WKWKKWK</td>
-                                                <td>231</td>
-                                                <td>3444</td>
-                                                <td>5</td>
-                                                <td>8</td>
-                                                <td>2</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Piala Dunia Malam ini GUY #jokowi3periode</td>
-                                                <td>86</td>
-                                                <td>211</td>
-                                                <td>85</td>
-                                                <td>22</td>
-                                                <td>2</td>
-                                                <td>7</td>
-                                                <td>9</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Coba klo pak Jokowi boleh 3 periode tambah menangis lagi kalian</td>
-                                                <td>76</td>
-                                                <td>2222</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>9</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
+                        <form action="" method="POST">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <p>Silahkan Masukkan Hastag / Kata Kunci dan Jumlah Maksimal Tweet yang akan diambil
+                                        melalui Twitter API dan tekan tombol "Proses" untuk melakukan Memproses
+                                        Pengambilan
+                                        Data</p>
                                 </div>
-
                             </div>
-                        </div>
+
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="kata_kunci">Kata Kunci / Hastags</label>
+                                        <input type="text" class="form-control" id="kata_kunci"
+                                            aria-describedby="emailHelp" placeholder="Contoh : Jokowi 3 Periode"
+                                            name="kata_kunci">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="number1">Jumlah Pencarian Tweet</label>
+                                        <input type="number" class="form-control" id="number1"
+                                            aria-describedby="emailHelp" placeholder="Contoh : 100" name="jumlah_tweet">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-md-2 col-lg-2">
+                                    <div class="form-group">
+                                        <label for="tanggal_dari">Dari Tanggal : </label>
+                                        <input type="date" class="form-control" id="number1"
+                                            aria-describedby="emailHelp" name="tanggal_dari">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-md-2 col-lg-2">
+                                    <div class="form-group">
+                                        <label for="tanggal_sampai">Sampai Tanggal</label>
+                                        <input type="date" class="form-control" id="number1"
+                                            aria-describedby="emailHelp" name="tanggal_sampai">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-md btn-primary">Proses</button>
+                                </div>
+                            </div>
+                        </form>
 
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
