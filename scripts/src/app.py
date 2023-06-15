@@ -1,4 +1,4 @@
-from flask import redirect, url_for, render_template, request
+from flask import redirect, url_for, render_template, request, session
 import snscrape.modules.twitter as sntwitter 
 
 from scripts import app, connect
@@ -34,6 +34,9 @@ def dashboard_crawling():
                 break
             else:
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
+        con = connect()
+        cursor = con.cursor()
+        cursor.execute("SELECT * FROM prefix")
     return render_template('crawling.html', data_tweets=data_tweets)
 
 @app.route('/dashboard/pre-processing')
@@ -47,6 +50,3 @@ def dashboard_spell_correction():
 @app.route('/dashboard/pembobotan-kata')
 def dashboard_pembobotan_kata():
     return render_template('pembobotan-kata.html')
-
-# if __name__ == '__main__':
-#     app.run(host='0.0.0.0', port=5002)
