@@ -3,6 +3,8 @@ import snscrape.modules.twitter as sntwitter
 import datetime
 import re
 from cleantext import clean
+import random
+import string
 
 from scripts import app, connect
 
@@ -87,7 +89,11 @@ def dashboard_crawling():
     date_tweet = None
     text_crawling = None
     cleaning_text_crawling = None
+    cleaningemoji = None
+    input_query = None
+    random_strings = None
     data_tweets = []
+
     if request.method == 'POST':
         kata_kunci = request.form['kata_kunci']
         jumlah_tweet = request.form['jumlah_tweet']
@@ -95,11 +101,17 @@ def dashboard_crawling():
         tanggal_sampai = request.form['tanggal_sampai']
         maxTweets = int(jumlah_tweet)
         cari_kata = kata_kunci + " since:" + tanggal_dari + " until:" + tanggal_sampai + " lang:id"
+
+        random_strings = 'prefixes' + ''.join(random.choice(string.ascii_lowercase) for kkk in range(5))
+        prefix_query = "INSERT INTO prefix (prefix_kode) VALUES ('" + random_strings + "')"
+        prefix = cursor.execute(prefix_query)
+        con.commit()
+
         for tweet in sntwitter.TwitterSearchScraper(cari_kata).get_items():
             if len(data_tweets) == maxTweets :
                 break
             else:
-                date_tweet = datetime.datetime.strftime(tweet.date, "%d/%m/%Y %H:%M:%S")
+                date_tweet = datetime.datetime.strftime(tweet.date, "%d/%m/%Y")
                 user_tweet = tweet.user.username
                 isi_tweet = tweet.content
                 tanggal_tweet = tweet.date
@@ -110,11 +122,10 @@ def dashboard_crawling():
                 cleaningemoji = clean(text_crawling, no_emoji=True)
                 cleaning_text_crawling = cleaning_crawling(cleaningemoji)
 
-                input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet) VALUES ('" + user_tweet + "','" + cleaning_text_crawling + "','" + date_tweet + "')" 
-                input_crawling = cursor.execute(input_query)
-
+                input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet, prefix_crawling) VALUES ('" + user_tweet + "','" + cleaning_text_crawling + "','" + date_tweet + "','" + random_strings + "')"
+                # input_crawling = cursor.execute(input_query)
+                # con.commit()
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
-        cursor.execute("SELECT * FROM prefix")
     return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet, text_crawling=text_crawling, cleaning_text_crawling=cleaning_text_crawling, cleaningemoji=cleaningemoji, input_query=input_query)
 
 @app.route('/dashboard/pre-processing')
