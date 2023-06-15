@@ -54,6 +54,9 @@ def login():
 
 @app.route('/dashboard/crawling', methods=('GET', 'POST'))
 def dashboard_crawling():
+    ceksession = cek_session()
+    if ceksession == False:
+        return redirect(url_for('login'))
     data_tweets = []
     if request.method == 'POST':
         kata_kunci = request.form['kata_kunci']
@@ -74,12 +77,21 @@ def dashboard_crawling():
 
 @app.route('/dashboard/pre-processing')
 def dashboard_preprocessing():
+    ceksession = cek_session()
+    if ceksession == False:
+        return redirect(url_for('login'))
     return render_template('pre-processing.html')
 
 @app.route('/dashboard/spell-correction')
 def dashboard_spell_correction():
+    ceksession = cek_session()
+    if ceksession == False:
+        return redirect(url_for('login'))
     return render_template('spell-correction.html')
 
 @app.route('/dashboard/pembobotan-kata')
 def dashboard_pembobotan_kata():
+    ceksession = cek_session()
+    if ceksession == False:
+        return redirect(url_for('login'))
     return render_template('pembobotan-kata.html')
