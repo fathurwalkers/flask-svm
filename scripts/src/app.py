@@ -92,6 +92,7 @@ def dashboard_crawling():
     cleaningemoji = None
     input_query = None
     random_strings = None
+    cek_prefix = None
     data_tweets = []
 
     if request.method == 'POST':
@@ -105,7 +106,6 @@ def dashboard_crawling():
         random_strings = 'prefixes' + ''.join(random.choice(string.ascii_lowercase) for kkk in range(5))
         prefix_query = "INSERT INTO prefix (prefix_kode) VALUES ('" + random_strings + "')"
         prefix = cursor.execute(prefix_query)
-        con.commit()
 
         for tweet in sntwitter.TwitterSearchScraper(cari_kata).get_items():
             if len(data_tweets) == maxTweets :
@@ -115,21 +115,18 @@ def dashboard_crawling():
                 user_tweet = tweet.user.username
                 isi_tweet = tweet.content
                 tanggal_tweet = tweet.date
-
                 text_crawling = tweet.content
-
-                # clean(text, no_emoji=True)
                 cleaningemoji = clean(text_crawling, no_emoji=True)
                 cleaning_text_crawling = cleaning_crawling(cleaningemoji)
-
                 input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet, prefix_crawling) VALUES ('" + user_tweet + "','" + cleaning_text_crawling + "','" + date_tweet + "','" + random_strings + "')"
-                # input_crawling = cursor.execute(input_query)
-                # con.commit()
+                input_crawling = cursor.execute(input_query)
+                con.commit()
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
-    return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet, text_crawling=text_crawling, cleaning_text_crawling=cleaning_text_crawling, cleaningemoji=cleaningemoji, input_query=input_query)
+    return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet, text_crawling=text_crawling, cleaning_text_crawling=cleaning_text_crawling, cleaningemoji=cleaningemoji, input_query=input_query, cek_prefix=random_strings)
 
-@app.route('/dashboard/pre-processing')
+@app.route('/dashboard/pre-processing', methods=('GET', 'POST'))
 def dashboard_preprocessing():
+    
     ceksession = cek_session()
     if ceksession == False:
         return redirect(url_for('login'))
