@@ -145,3 +145,10 @@ def dashboard_pembobotan_kata():
     if ceksession == False:
         return redirect(url_for('login'))
     return render_template('pembobotan-kata.html')
+
+@app.route('/prefix')
+def prefix():
+    ceksession = cek_session()
+    if ceksession == False:
+        return redirect(url_for('login'))
+    return render_template('prefix.html')
