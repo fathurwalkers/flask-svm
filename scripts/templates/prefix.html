@@ -21,139 +21,74 @@ Beranda
         <div class="col-sm-12 col-md-12 col-lg-12">
 
             <div class="card">
-                <div class="card-body">
-                    <div class="container mb-2">
-
-                        <div class="row mb-4">
+                <div class="card-header">
+                    <div class="container mt-2">
+                        <div class="row">
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <h4 class="text-dark">
-                                    <b>Pre-Processing Data</b>
+                                    <b>Prefix Data</b>
                                 </h4>
-                                <p>{{ cek_prefix }}</p>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
                                 <button type="button" class="btn btn-sm btn-primary">Kembali</button>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <p>
-                                    Silahkan tekan tombol "Proses Data" dibawah untuk melakukan pemrosesan Data Anda.
-                                    Pemrosesan Data akan membutuhkan waktu yang lama (Lama Waktu Pemrosesan data
-                                    berdasarkan dari spesifikasi Perangkat dan jumlah total record keseluruhan data yang
-                                    ada).
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal"
-                                    data-target="#modal_proses">Proses Data</button>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="modal_proses" tabindex="-1" role="dialog"
-                            aria-labelledby="modal_proses" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modal_proses">Peringatan Aksi!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>
-                                            Mohon perhatikan baik-baik catatan dibawah ini sebelum melanjutkan ke proses
-                                            pemrosesan data analisis sentimen:<br />
-                                            <br />
-                                            1. Melakukan pemrosesan data akan memakan waktu yang cukup lama. Waktu yang
-                                            dibutuhkan tergantung dari perangkat komputer / lapotan anda dan jumlah
-                                            record yang akan diproses.<br />
-                                            <br />
-                                            2. Sewaktu melakukan pemrosesan data, Aktivitas lain seperti melakukan
-                                            refresh halaman (reload) ini, menutup tab, menutup browser dan sebagainya
-                                            dapat menyebabkan gagalnya proses pemrosesan data.<br />
-                                            <br />
-                                            3. untuk optimalisasi silahkan tunggu hingga proses loading data
-                                            selesai.<br />
-                                            <br />
-                                            Jika Anda sudah mengerti dengan seluruh catatan diatas, silahkan melanjutkan
-                                            ke-tahap pemrosesan data ini.<br />
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="" method="POST">
-                                            <input type="hidden" name="hapus_id" value="">
-                                            <button type="button" class="btn btn-outline-danger"
-                                                data-dismiss="modal">Batalkan</button>
-                                            <button type="submit" class="btn btn-success">Proses</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-
-            <div class="card mt-4">
                 <div class="card-body">
                     <div class="container mb-4">
 
-                        <form action="" method="POST">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <p>Silahkan Masukkan Hastag / Kata Kunci dan Jumlah Maksimal Tweet yang akan diambil
-                                        melalui Twitter API dan tekan tombol "Proses" untuk melakukan Memproses
-                                        Pengambilan
-                                        Data</p>
-                                </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>Pilih salah satu dari prefix yang ada dibawah ini untuk menentukan Data sesuai Prefix
+                                    yang anda.</p>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 col-lg-4">
-                                    <div class="form-group">
-                                        <label for="kata_kunci">Kata Kunci / Hastags</label>
-                                        <input type="text" class="form-control" id="kata_kunci"
-                                            aria-describedby="emailHelp" placeholder="Contoh : Jokowi 3 Periode"
-                                            name="kata_kunci">
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 col-lg-4">
-                                    <div class="form-group">
-                                        <label for="number1">Jumlah Pencarian Tweet</label>
-                                        <input type="number" class="form-control" id="number1"
-                                            aria-describedby="emailHelp" placeholder="Contoh : 100" name="jumlah_tweet">
-                                    </div>
-                                </div>
-                                <div class="col-sm-2 col-md-2 col-lg-2">
-                                    <div class="form-group">
-                                        <label for="tanggal_dari">Dari Tanggal : </label>
-                                        <input type="date" class="form-control" id="number1"
-                                            aria-describedby="emailHelp" name="tanggal_dari">
-                                    </div>
-                                </div>
-                                <div class="col-sm-2 col-md-2 col-lg-2">
-                                    <div class="form-group">
-                                        <label for="tanggal_sampai">Sampai Tanggal</label>
-                                        <input type="date" class="form-control" id="number1"
-                                            aria-describedby="emailHelp" name="tanggal_sampai">
-                                    </div>
-                                </div>
+                        <div class="row mb-4">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button type="button" class="btn btn-md btn-primary mr-1">Copy</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">Excel</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">CSV</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">PDF</button>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-md btn-primary">Proses</button>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                <div class="table-responsive">
+                                    <table id="example" class="display table-bordered" style="width:100%">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Kode Prefix</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for items in prefixes : %}
+                                            <tr>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ items[1] }}</td>
+                                                <td class="d-flex justify-content-center">
+                                                    <button class="btn btn-md btn-info">
+                                                        PROSES
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
                                 </div>
+
                             </div>
-                        </form>
+                        </div>
 
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

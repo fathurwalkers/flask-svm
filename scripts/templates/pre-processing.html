@@ -30,6 +30,7 @@ Beranda
                                     <b>Pre-Processing Data</b>
                                 </h4>
                                 <p>{{ cek_prefix }}</p>
+                                <p>{{ preprocessing }}</p>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
                                 <button type="button" class="btn btn-sm btn-primary">Kembali</button>
@@ -135,73 +136,21 @@ Beranda
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>No.</th>
+                                                <th>Nama</th>
                                                 <th>Tweet</th>
-                                                <th>Jumlah Kata</th>
-                                                <th>Jumlah Huruf</th>
-                                                <th>Jumlah Rerata Kata</th>
-                                                <th>Jumlah StopWord</th>
-                                                <th>Jumlah Hastag</th>
-                                                <th>Jumlah Character Numerik</th>
-                                                <th>Jumlah Uppercase</th>
+                                                <th>Tanggal</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
+                                            {% for items in preprocessing : %}
                                             <tr>
-                                                <td>1</td>
-                                                <td>Memperingati 2 Periode Jokowi [Happy]</td>
-                                                <td>22</td>
-                                                <td>567</td>
-                                                <td>5</td>
-                                                <td>0</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>6</td>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ items[1] }}</td>
+                                                <td>{{ items[2] }}</td>
+                                                <td>{{ items[3] }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>RT @blouverad : Publik News Jokowi 3 Periode</td>
-                                                <td>22</td>
-                                                <td>56</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>6</td>
-                                                <td>8</td>
-                                                <td>11</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>RT @uuulove333: Kapanlagi ada presiden 3 periode?WKWKKWK</td>
-                                                <td>231</td>
-                                                <td>3444</td>
-                                                <td>5</td>
-                                                <td>8</td>
-                                                <td>2</td>
-                                                <td>4</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Piala Dunia Malam ini GUY #jokowi3periode</td>
-                                                <td>86</td>
-                                                <td>211</td>
-                                                <td>85</td>
-                                                <td>22</td>
-                                                <td>2</td>
-                                                <td>7</td>
-                                                <td>9</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Coba klo pak Jokowi boleh 3 periode tambah menangis lagi kalian</td>
-                                                <td>76</td>
-                                                <td>2222</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>9</td>
-                                            </tr>
+                                            {% endfor %}
 
                                         </tbody>
                                     </table>

@@ -126,11 +126,22 @@ def dashboard_crawling():
 
 @app.route('/dashboard/pre-processing/<prefix>', methods=('GET', 'POST'))
 def dashboard_preprocessing(prefix):
-    cek_prefix = prefix
     ceksession = cek_session()
     if ceksession == False:
         return redirect(url_for('login'))
-    return render_template('pre-processing.html', cek_prefix=cek_prefix)
+    cek_prefix = prefix
+    preprocessing = None
+
+    if cek_prefix == None:
+        return render_template('pre-processing.html', cek_prefix=cek_prefix, preprocessing=preprocessing)
+    else:
+        query_all_crawling = "SELECT * FROM crawling WHERE prefix_crawling='" + cek_prefix + "'"
+        con = connect()
+        cursor = con.cursor()
+        cursor.execute(query_all_crawling)
+        preprocessing = cursor.fetchall()
+    return render_template('pre-processing.html', cek_prefix=cek_prefix, preprocessing=preprocessing)
+
 
 @app.route('/dashboard/spell-correction')
 def dashboard_spell_correction():
@@ -146,9 +157,15 @@ def dashboard_pembobotan_kata():
         return redirect(url_for('login'))
     return render_template('pembobotan-kata.html')
 
-@app.route('/prefix')
+@app.route('/dashboard/prefix')
 def prefix():
     ceksession = cek_session()
     if ceksession == False:
         return redirect(url_for('login'))
-    return render_template('prefix.html')
+
+    con = connect()
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM prefix")
+    prefixes = cursor.fetchall()
+
+    return render_template('prefix.html', prefixes=prefixes)
