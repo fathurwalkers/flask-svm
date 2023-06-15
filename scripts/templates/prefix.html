@@ -1,0 +1,234 @@
+{% extends 'layout.html' %}
+
+{% block header_content %}
+Beranda
+{% endblock %}
+{% block mini_header_content %}
+Beranda
+{% endblock %}
+
+{% block style_css %}
+<link href="/datatables/datatables.min.css" rel="stylesheet">
+<style>
+
+</style>
+{% endblock %}
+
+{% block main_content %}
+<div class="container pb-4">
+
+    <div class="row pb-4">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="container mb-2">
+
+                        <div class="row mb-4">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-dark">
+                                    <b>Pre-Processing Data</b>
+                                </h4>
+                                <p>{{ cek_prefix }}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
+                                <button type="button" class="btn btn-sm btn-primary">Kembali</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>
+                                    Silahkan tekan tombol "Proses Data" dibawah untuk melakukan pemrosesan Data Anda.
+                                    Pemrosesan Data akan membutuhkan waktu yang lama (Lama Waktu Pemrosesan data
+                                    berdasarkan dari spesifikasi Perangkat dan jumlah total record keseluruhan data yang
+                                    ada).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal"
+                                    data-target="#modal_proses">Proses Data</button>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="modal_proses" tabindex="-1" role="dialog"
+                            aria-labelledby="modal_proses" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal_proses">Peringatan Aksi!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            Mohon perhatikan baik-baik catatan dibawah ini sebelum melanjutkan ke proses
+                                            pemrosesan data analisis sentimen:<br />
+                                            <br />
+                                            1. Melakukan pemrosesan data akan memakan waktu yang cukup lama. Waktu yang
+                                            dibutuhkan tergantung dari perangkat komputer / lapotan anda dan jumlah
+                                            record yang akan diproses.<br />
+                                            <br />
+                                            2. Sewaktu melakukan pemrosesan data, Aktivitas lain seperti melakukan
+                                            refresh halaman (reload) ini, menutup tab, menutup browser dan sebagainya
+                                            dapat menyebabkan gagalnya proses pemrosesan data.<br />
+                                            <br />
+                                            3. untuk optimalisasi silahkan tunggu hingga proses loading data
+                                            selesai.<br />
+                                            <br />
+                                            Jika Anda sudah mengerti dengan seluruh catatan diatas, silahkan melanjutkan
+                                            ke-tahap pemrosesan data ini.<br />
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="hapus_id" value="">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-dismiss="modal">Batalkan</button>
+                                            <button type="submit" class="btn btn-success">Proses</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="container mb-4">
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <h4 class="text-dark">
+                                    <b>Hasil dari Pembersihan Data. (Trim, Hapus URL, Mention, Clear Spaces, dst.)</b>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>Data yang dikumpul dan ditampilkan dibawah ini adalah data yang diperoleh dari proses
+                                    Pre-Processing Data melalui Twitter API. </p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button type="button" class="btn btn-md btn-primary mr-1">Copy</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">Excel</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">CSV</button>
+                                <button type="button" class="btn btn-md btn-primary mr-1">PDF</button>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                <div class="table-responsive">
+                                    <table id="example" class="display table-bordered" style="width:100%">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Tweet</th>
+                                                <th>Jumlah Kata</th>
+                                                <th>Jumlah Huruf</th>
+                                                <th>Jumlah Rerata Kata</th>
+                                                <th>Jumlah StopWord</th>
+                                                <th>Jumlah Hastag</th>
+                                                <th>Jumlah Character Numerik</th>
+                                                <th>Jumlah Uppercase</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Memperingati 2 Periode Jokowi [Happy]</td>
+                                                <td>22</td>
+                                                <td>567</td>
+                                                <td>5</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>RT @blouverad : Publik News Jokowi 3 Periode</td>
+                                                <td>22</td>
+                                                <td>56</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>6</td>
+                                                <td>8</td>
+                                                <td>11</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>RT @uuulove333: Kapanlagi ada presiden 3 periode?WKWKKWK</td>
+                                                <td>231</td>
+                                                <td>3444</td>
+                                                <td>5</td>
+                                                <td>8</td>
+                                                <td>2</td>
+                                                <td>4</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Piala Dunia Malam ini GUY #jokowi3periode</td>
+                                                <td>86</td>
+                                                <td>211</td>
+                                                <td>85</td>
+                                                <td>22</td>
+                                                <td>2</td>
+                                                <td>7</td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Coba klo pak Jokowi boleh 3 periode tambah menangis lagi kalian</td>
+                                                <td>76</td>
+                                                <td>2222</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>9</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/datatables/datatables.min.js"></script>
+<script src="/assets/ruangadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+<script>
+    // const datatabless = document.getElementById('example');
+    // datatabless.DataTable();
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+{% endblock %}
