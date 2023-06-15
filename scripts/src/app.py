@@ -15,46 +15,26 @@ def cek_session():
         return True
 
 def cleaning_crawling(text):
-    return (
-        text.replace("&", '').
-        replace('"', '').
-        replace("'", "").
-        replace('?', '').
-        replace(',', '').
-        replace("<", "").
-        replace(">", "").
-        replace(":", "").
-        replace("/", "").
-        replace('\\', "").
-        replace("(", '').
-        replace(")", '').
-        replace("{", '').
-        replace("}", '').
-        replace("@", "").
-        replace("? s'", "")
-    )
-
-# def cleaning_emoji(data):
-#     emoj = re.compile("["
-#         u"\U0001F600-\U0001F64F"  # emoticons
-#         u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-#         u"\U0001F680-\U0001F6FF"  # transport & map symbols
-#         u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-#         u"\U00002500-\U00002BEF"  # chinese char
-#         u"\U00002702-\U000027B0"
-#         u"\U00002702-\U000027B0"
-#         u"\U000024C2-\U0001F251"
-#         u"\U0001f926-\U0001f937"
-#         u"\U00010000-\U0010ffff"
-#         u"\u2640-\u2642" 
-#         u"\u2600-\u2B55"
-#         u"\u200d"
-#         u"\u23cf"
-#         u"\u23e9"
-#         u"\u231a"
-#         u"\ufe0f"  # dingbats
-#         u"\u3030""]+", re.UNICODE)
-#     return re.sub(emoj, '', data)
+    cleaningstring = re.sub('[^A-Za-z0-9]+', ' ', text)
+    return cleaningstring
+    # return (
+    #     text.replace("&", '').
+    #     replace('"', '').
+    #     replace("'", "").
+    #     replace('?', '').
+    #     replace(',', '').
+    #     replace("<", "").
+    #     replace(">", "").
+    #     replace(":", "").
+    #     replace("/", "").
+    #     replace('\\', "").
+    #     replace("(", '').
+    #     replace(")", '').
+    #     replace("{", '').
+    #     replace("}", '').
+    #     replace("@", "").
+    #     replace("? s'", "")
+    # )
 
 @app.route("/")
 def home():
@@ -130,12 +110,12 @@ def dashboard_crawling():
                 cleaningemoji = clean(text_crawling, no_emoji=True)
                 cleaning_text_crawling = cleaning_crawling(cleaningemoji)
 
-                input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet) VALUES (" + user_tweet + "," + cleaning_text_crawling + "," + date_tweet + ")" 
-                input_crawling = cursor.execute(input_query)
+                input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet) VALUES ('" + user_tweet + "','" + cleaning_text_crawling + "','" + date_tweet + "')" 
+                # input_crawling = cursor.execute(input_query)
 
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
         cursor.execute("SELECT * FROM prefix")
-    return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet, text_crawling=text_crawling, cleaning_text_crawling=cleaning_text_crawling, cleaningemoji=cleaningemoji)
+    return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet, text_crawling=text_crawling, cleaning_text_crawling=cleaning_text_crawling, cleaningemoji=cleaningemoji, input_query=input_query)
 
 @app.route('/dashboard/pre-processing')
 def dashboard_preprocessing():
