@@ -17,11 +17,9 @@ def home():
 
 @app.route('/dashboard')
 def dashboard():
-    # session.pop('login', None)
     ceksession = cek_session()
     if ceksession == False:
         return redirect(url_for('login'))
-
     con = connect()
     cursor = con.cursor()
     cursor.execute("SELECT * FROM login")
