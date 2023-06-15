@@ -3,21 +3,56 @@ import snscrape.modules.twitter as sntwitter
 
 from scripts import app, connect
 
+def cek_session():
+    status_session = None
+    session_user = session.get('login')
+    if session_user == None:
+        return False
+    else:
+        return True
+
 @app.route("/")
 def home():
     return redirect(url_for('dashboard'))
 
 @app.route('/dashboard')
 def dashboard():
+    # session.pop('login', None)
+    ceksession = cek_session()
+    if ceksession == False:
+        return redirect(url_for('login'))
+
     con = connect()
     cursor = con.cursor()
     cursor.execute("SELECT * FROM login")
     login = cursor.fetchall()
     return render_template('dashboard.html', login=login)
 
-@app.route('/login')
+@app.route('/login', methods=('GET', 'POST'))
 def login():
-    return render_template('login.html')
+    username = None
+    password = None
+    users = None
+    ceksession = cek_session()
+    if ceksession == True:
+        return redirect(url_for('dashboard'))
+    if request.method == 'POST': 
+        username = request.form['username']
+        password = request.form['password']
+        query = "SELECT * FROM login WHERE login_username='" + username +"'"
+        con = connect()
+        cursor = con.cursor()
+        cursor.execute(query)
+        users = cursor.fetchone()
+        if users: 
+            if ceksession == False:
+                session['login'] = username
+                return redirect(url_for('dashboard'))
+            else:
+                return redirect(url_for('dashboard'))
+        else:
+            users = "User Kosong"
+    return render_template('login.html', username=username, password=password, users=users, cek_session=ceksession)
 
 @app.route('/dashboard/crawling', methods=('GET', 'POST'))
 def dashboard_crawling():
