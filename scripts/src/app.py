@@ -111,7 +111,7 @@ def dashboard_crawling():
                 cleaning_text_crawling = cleaning_crawling(cleaningemoji)
 
                 input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet) VALUES ('" + user_tweet + "','" + cleaning_text_crawling + "','" + date_tweet + "')" 
-                # input_crawling = cursor.execute(input_query)
+                input_crawling = cursor.execute(input_query)
 
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
         cursor.execute("SELECT * FROM prefix")
