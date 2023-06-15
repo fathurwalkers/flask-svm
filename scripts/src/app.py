@@ -1,5 +1,6 @@
 from flask import redirect, url_for, render_template, request, session
 import snscrape.modules.twitter as sntwitter 
+import datetime
 
 from scripts import app, connect
 
@@ -57,6 +58,9 @@ def dashboard_crawling():
     ceksession = cek_session()
     if ceksession == False:
         return redirect(url_for('login'))
+    con = connect()
+    cursor = con.cursor()
+    date_tweet = None
     data_tweets = []
     if request.method == 'POST':
         kata_kunci = request.form['kata_kunci']
@@ -69,11 +73,16 @@ def dashboard_crawling():
             if len(data_tweets) == maxTweets :
                 break
             else:
+                date_tweet = datetime.datetime.strftime(tweet.date, "%d/%m/%Y %H:%M:%S")
+                user_tweet = tweet.user.username
+                isi_tweet = tweet.content
+                tanggal_tweet = tweet.date
+
+                input_query = "INSERT INTO crawling (user_tweet, isi_tweet, tanggal_tweet) VALUES (" + user_tweet + "," + isi_tweet + "," + tanggal_tweet + ")" 
+                input_crawling = cursor.execute(input_query)
                 data_tweets.append([tweet.date, tweet.user.username, tweet.content])
-        con = connect()
-        cursor = con.cursor()
         cursor.execute("SELECT * FROM prefix")
-    return render_template('crawling.html', data_tweets=data_tweets)
+    return render_template('crawling.html', data_tweets=data_tweets, date_tweet=date_tweet)
 
 @app.route('/dashboard/pre-processing')
 def dashboard_preprocessing():
