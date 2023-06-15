@@ -79,6 +79,12 @@ def login():
             users = "User Kosong"
     return render_template('login.html', username=username, password=password, users=users, cek_session=ceksession)
 
+@app.route('/logout', methods=('POST', 'GET'))
+def logout():
+    if request.method == 'POST':
+        session['login'] = None
+        return redirect(url_for('login'))
+
 @app.route('/dashboard/crawling', methods=('GET', 'POST'))
 def dashboard_crawling():
     ceksession = cek_session()
